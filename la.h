@@ -46,5 +46,32 @@ void laStatsReset();                            // Zero all statistics
 void laStatsIncrement( int wclass, int wopr );  // Increment one of the counters
 void laStatsPrint();                            // Print the statistics
 
+// ****************************************************************************
+//
+// DenseVector class definition
+//
+// ****************************************************************************
+
+class DenseVector {
+    public:
+        DenseVector( int N );                   // Basic constructor
+        DenseVector( string name, int N );      // Named constructor
+        DenseVector( DenseVector& v0 );         // Copy
+        ~DenseVector();                         // Destructor
+        void set( int i, double val );          // Element set
+        void setvec( double* vn );              // Element set
+        double get( int i );                    // Element get
+        void setconst( double val );            // Set all elements to constant
+        void setrandom();                       // Set all elements randomly
+        void print();                           // Print all elements
+        void newname( string name );            // Change the name
+
+    private:
+        string      vname;
+        int         vlen;
+        double*     v;
+
+    protected:
+};
 
 #endif /* H_LA */
