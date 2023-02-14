@@ -50,6 +50,8 @@ void laStatsPrint()
     {
         if ( i == laStatsDeV )
             cout << "DenseVector:    ";
+        else if ( i == laStatsDeM )
+            cout << "DenseMatrix:    ";    
         cout << laStats[i][laStatsCon] << "," 
              << laStats[i][laStatsCop] << "," 
              << laStats[i][laStatsDes] << endl;

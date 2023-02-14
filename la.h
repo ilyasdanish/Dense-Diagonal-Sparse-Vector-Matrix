@@ -74,4 +74,41 @@ class DenseVector {
     protected:
 };
 
+// ****************************************************************************
+//
+// DenseMatrix class definition
+//
+// ****************************************************************************
+
+class DenseMatrix {
+    public:
+        DenseMatrix();                                  // Basic constructor
+        DenseMatrix( int N );                           // Basic constructor
+        DenseMatrix( string name, int N );              // Named constructor
+        DenseMatrix( string name, int N, int M );       // Named constructor
+        DenseMatrix( DenseMatrix& m0 );                 // Copy
+        ~DenseMatrix();                                 // Destructor
+        void create( int N, int M );                    // Create elements
+        void set( int i, int j, double val );           // Element set
+        double get( int i, int j );                     // Element get
+        int getrows( int i );                           // Get mrows
+        void setconst( double val );                    // Set all elements to constant
+        void setrandom();                               // Set all elements randomly
+        void setrow( int i, DenseVector& v );           // Replace row i
+        void getcol( int j, DenseVector& v );           // Get a column
+        void setspd();                                  // Set all elements randomly
+        double rowxvec( int i, DenseVector& v );        // (row i,v) inner product
+        void print();                                   // Print all elements
+        void printm();                                  // Print the matrix array
+        void newname( string name );                    // Change the name
+
+    private:
+
+    protected:
+        double**    mat;
+        string      mname;
+        int         mcols;
+        int         mrows;
+};
+
 #endif /* H_LA */

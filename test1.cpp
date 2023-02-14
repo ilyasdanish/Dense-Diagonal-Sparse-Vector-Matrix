@@ -39,6 +39,46 @@ void testDV()
 
 // ****************************************************************************
 //
+//  Test the DenseMatrix class
+//
+// ****************************************************************************
+
+void testDeM()
+{
+    // General variables
+    int             N = 3;
+    int             M = 2;
+    double          two = 2.0;
+    double          ip;
+
+    // DenseMatrix testing
+    DenseMatrix     m1( N );
+    m1.print();
+    m1.setconst( two );
+    m1.newname( "m1" );
+    m1.print();
+    DenseVector     v1( "v1", N );
+    v1.setrandom();
+    v1.print();
+    ip = m1.rowxvec( 0, v1 );
+    cout << "(row 0,v1) = " << ip << endl;
+    ip = m1.rowxvec( 2, v1 );
+    cout << "(row 2,v1) = " << ip << endl;
+    DenseMatrix     m2( "m2", N + 1 );
+    m2.setspd();
+    m2.print();
+    DenseMatrix     m3( "m3", N, M );
+    m3.setrandom();
+    m3.print();
+    m3.getcol( 1, v1 );
+    v1.print();
+    DenseMatrix     m4 = m1;
+    m4.newname( "m4" );
+    m4.print();
+};
+
+// ****************************************************************************
+//
 //  Test my linear algebra classes and their functions
 //
 // ****************************************************************************
@@ -59,6 +99,12 @@ int main( int argc, char* argv[] )
     if ( testing[laStatsDeV] )
     {   cout << "***** DenseVector class testing" << endl;
         testDV();
+        cout << endl;
+    }
+
+    if ( testing[laStatsDeM] )
+    {   cout << "***** DenseMatrix class testing" << endl;
+        testDeM();
         cout << endl;
     }
 

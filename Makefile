@@ -16,9 +16,9 @@ CPP=g++
 CPPFLAGS=-c -O3 -w -g $(DEBUGGING)
 LFLAGS=-O3 -g
 
-LA_C_FILES = la.cpp DenseVector.cpp
+LA_C_FILES = la.cpp DenseVector.cpp DenseMatrix.cpp
 LA_H_FILES = la.h
-LA_O_FILES = la.o DenseVector.o
+LA_O_FILES = la.o DenseVector.o DenseMatrix.o
 T_C_FILES = test1.cpp
 T_O_FILES = test1.o
 T_FILES = test1
@@ -62,7 +62,8 @@ la.o:	la.h la.cpp Makefile
 DenseVector.o:	la.h DenseVector.cpp Makefile
 	$(CPP) $(CPPFLAGS) DenseVector.cpp
 
-
+DenseMatrix.o:	la.h DenseMatrix.cpp Makefile
+	$(CPP) $(CPPFLAGS) DenseMatrix.cpp
 ###############################################################################
 #
 #   Test programs
@@ -72,8 +73,8 @@ DenseVector.o:	la.h DenseVector.cpp Makefile
 test1.o:	la.h test1.cpp Makefile
 	$(CPP) $(CPPFLAGS) test1.cpp
 
-test1:	test1.o la.o DenseVector.o Makefile
-	$(CPP) $(LFLAGS) test1.o la.o DenseVector.o -o test1
+test1:	test1.o la.o DenseVector.o DenseMatrix.o Makefile
+	$(CPP) $(LFLAGS) test1.o la.o DenseVector.o DenseMatrix.o -o test1
 
 test1.txt:	test1
 	./test1 > test1.txt
